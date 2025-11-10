@@ -2,6 +2,8 @@
 
 This repository adapts the classic SEED "Buffer Overflow Attack Lab" to 64-bit ARM (AArch64) systems so you can reproduce the exploit end-to-end on Apple silicon Macs and other ARM64 hardware.  The original lab assumes x86 binaries and relies on an older `strcpy` implementation whose overflow behavior no longer appears on hardened ARM64 libc builds.  To mirror the original walkthrough, this version ships a compatible copy routine (`scpy`) plus a containerized Fedora 29 environment where all relevant mitigations can be disabled for educational use.
 
+[![Stack Overflow 2](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Stack_Overflow_2.png/256px-Stack_Overflow_2.png?20120309045232)](https://commons.wikimedia.org/wiki/File:Stack_Overflow_2.png) [![Stack Overflow 4](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Stack_Overflow_4.png/256px-Stack_Overflow_4.png?20120309044507)](https://commons.wikimedia.org/wiki/File:Stack_Overflow_4.png) 
+
 ## 1. Lab Overview
 
 The goal of the lab is to craft an input file (`badfile`) that overflows a stack buffer in `stack.c`, overwrites the saved return address, and redirects execution into injected shellcode that spawns a shell.  You will:
